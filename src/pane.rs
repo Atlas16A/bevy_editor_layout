@@ -332,7 +332,23 @@ pub fn spawn_pane(
                          window: Query<&Window>,
                          panes: Query<Entity, With<PaneRootNode>>| {
                             panes.iter().for_each(|pane| {
+
+                                let trigger_pane = parents.get(trigger.entity()).unwrap().get();
+                                let trigger_pane_style = styles.get(trigger_pane).unwrap();
+
+                                //Check if the pane is not the pane holding the resize bar
+                                if pane != trigger_pane {
+                                    let root_style = styles.get(root.single()).unwrap();
+                                    if trigger_pane_style.grid_column.get_end().unwrap() - 1
+                                        != root_style.grid_template_columns.len() as i16
+                                    {
+                                    }
+                                }
+
+                                /* if styles
+
                                 if styles
+
                                     .get(parents.get(trigger.entity()).unwrap().get())
                                     .unwrap()
                                     .grid_column
@@ -385,7 +401,10 @@ pub fn spawn_pane(
                                             .left;
                                         println!("Pane Start: {:#?}", pane_start);
                                     }
+
+                                } */
                                 }
+
                             });
                         },
                     );
