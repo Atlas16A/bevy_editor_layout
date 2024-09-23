@@ -332,7 +332,6 @@ pub fn spawn_pane(
                          window: Query<&Window>,
                          panes: Query<Entity, With<PaneRootNode>>| {
                             panes.iter().for_each(|pane| {
-
                                 let trigger_pane = parents.get(trigger.entity()).unwrap().get();
                                 let trigger_pane_style = styles.get(trigger_pane).unwrap();
 
@@ -403,8 +402,6 @@ pub fn spawn_pane(
                                     }
 
                                 } */
-                                }
-
                             });
                         },
                     );
